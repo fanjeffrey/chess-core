@@ -1,0 +1,24 @@
+name: Dart Test+Coverage
+
+on: [push, pull_request]
+
+jobs:
+  test-coverage:
+    runs-on: ubuntu-latest
+
+    container:
+      image: google/dart:latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: pub get
+      - name: Analyze code
+        run: dartanalyzer .
+      - name: Run tests with coverage
+        run: pub run test --coverage=coverage
+      - uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: ./coverage/lcov.info
