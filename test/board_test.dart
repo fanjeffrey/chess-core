@@ -45,35 +45,24 @@ void main() {
     });
 
     group('ChessBoard.arrangePiecesAtBottom', () {
-      verifyArrangePiecesAtBottom(
-          chessBoard, GeneralPiece(Position(rank: 1, file: 5)), 1, 5, 4);
-      verifyArrangePiecesAtBottom(
-          chessBoard, ChariotPiece(Position(rank: 1, file: 1)), 1, 1, 0);
-      verifyArrangePiecesAtBottom(
-          chessBoard, ChariotPiece(Position(rank: 1, file: 9)), 1, 9, 8);
-      verifyArrangePiecesAtBottom(
-          chessBoard, CannonPiece(Position(rank: 3, file: 2)), 3, 2, 19);
-      verifyArrangePiecesAtBottom(
-          chessBoard, CannonPiece(Position(rank: 3, file: 8)), 3, 8, 25);
+      verifyArrangePiecesAtBottom(chessBoard, GeneralPiece(), 1, 5, 4);
+      verifyArrangePiecesAtBottom(chessBoard, ChariotPiece(), 1, 1, 0);
+      verifyArrangePiecesAtBottom(chessBoard, ChariotPiece(), 1, 9, 8);
+      verifyArrangePiecesAtBottom(chessBoard, CannonPiece(), 3, 2, 19);
+      verifyArrangePiecesAtBottom(chessBoard, CannonPiece(), 3, 8, 25);
     });
 
     group('ChessBoard.arrangePiecesAtTop', () {
-      verifyArrangePiecesAtTop(
-          chessBoard, GeneralPiece(Position(rank: 1, file: 5)), 1, 5, 85);
-      verifyArrangePiecesAtTop(
-          chessBoard, ChariotPiece(Position(rank: 1, file: 1)), 1, 1, 89);
-      verifyArrangePiecesAtTop(
-          chessBoard, ChariotPiece(Position(rank: 1, file: 9)), 1, 9, 81);
-      verifyArrangePiecesAtTop(
-          chessBoard, CannonPiece(Position(rank: 3, file: 2)), 3, 2, 70);
-      verifyArrangePiecesAtTop(
-          chessBoard, CannonPiece(Position(rank: 3, file: 8)), 3, 8, 64);
+      verifyArrangePiecesAtTop(chessBoard, GeneralPiece(), 1, 5, 85);
+      verifyArrangePiecesAtTop(chessBoard, ChariotPiece(), 1, 1, 89);
+      verifyArrangePiecesAtTop(chessBoard, ChariotPiece(), 1, 9, 81);
+      verifyArrangePiecesAtTop(chessBoard, CannonPiece(), 3, 2, 70);
+      verifyArrangePiecesAtTop(chessBoard, CannonPiece(), 3, 8, 64);
     });
   });
 }
 
-void verifyPosition(
-    Board chessBoard, int index, Position expectedPosition) {
+void verifyPosition(Board chessBoard, int index, Position expectedPosition) {
   test('the position at #$index should be position: $expectedPosition', () {
     expect(chessBoard.positions[index], expectedPosition);
   });
@@ -98,23 +87,25 @@ void verifyCalculateIndexFromTop(
   });
 }
 
-void verifyArrangePiecesAtBottom(Board chessBoard, Piece chessPiece,
-    int rank, int file, int expectedIndex) {
+void verifyArrangePiecesAtBottom(
+    Board chessBoard, Piece chessPiece, int rank, int file, int expectedIndex) {
   test(
       'the ${chessPiece.name} with rank #$rank and file #$file should be at the position #$expectedIndex on chess board',
       () {
-    var chessPieces = <Piece>[chessPiece];
+    var chessPieces =
+        PieceLayout({Position(rank: rank, file: file): chessPiece});
     chessBoard.arrangePiecesAtBottom(chessPieces);
     expect(chessBoard.positions[expectedIndex].chessPiece, chessPiece);
   });
 }
 
-void verifyArrangePiecesAtTop(Board chessBoard, Piece chessPiece,
-    int rank, int file, int expectedIndex) {
+void verifyArrangePiecesAtTop(
+    Board chessBoard, Piece chessPiece, int rank, int file, int expectedIndex) {
   test(
       'the ${chessPiece.name} with rank #$rank and file #$file should be at the position #$expectedIndex on chess board',
       () {
-    var chessPieces = <Piece>[chessPiece];
+    var chessPieces =
+        PieceLayout({Position(rank: rank, file: file): chessPiece});
     chessBoard.arrangePiecesAtTop(chessPieces);
     expect(chessBoard.positions[expectedIndex].chessPiece, chessPiece);
   });

@@ -1,50 +1,47 @@
-import 'position.dart';
-
 abstract class Piece {
   String name;
-  Position position;
 
-  Piece(this.name, this.position);
+  Piece(this.name);
 }
 
 class GeneralPiece extends Piece {
   static const String Name = 'General';
 
-  GeneralPiece(Position p) : super(Name, p);
+  GeneralPiece() : super(Name);
 }
 
 class AdvisorPiece extends Piece {
   static const String Name = 'Advisor';
 
-  AdvisorPiece(Position p) : super(Name, p);
+  AdvisorPiece() : super(Name);
 }
 
 class ElephantPiece extends Piece {
   static const String Name = 'Elephant';
 
-  ElephantPiece(Position p) : super(Name, p);
+  ElephantPiece() : super(Name);
 }
 
 class HorsePiece extends Piece {
   static const String Name = 'Horse';
 
-  HorsePiece(Position p) : super(Name, p);
+  HorsePiece() : super(Name);
 }
 
 class ChariotPiece extends Piece {
   static const String Name = 'Chariot';
 
-  ChariotPiece(Position p) : super(Name, p);
+  ChariotPiece() : super(Name);
 }
 
 class CannonPiece extends Piece {
   static const String Name = 'Cannon';
 
-  CannonPiece(Position p) : super(Name, p);
+  CannonPiece() : super(Name);
 }
 
 class SoldierPiece extends Piece {
   static const String Name = 'Soldier';
 
-  SoldierPiece(Position p) : super(Name, p);
+  SoldierPiece() : super(Name);
 }

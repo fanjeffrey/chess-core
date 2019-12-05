@@ -5,23 +5,25 @@ void main() {
   group('ChessGame.f2f', () {
     var me = Player('player1');
     var opponent = Player('player2');
-    var game = Game.f2f(me, opponent);
+    var blackPieceLayout = PieceLayout.createDefaultLayout();
+    var redPieceLayout = PieceLayout.createDefaultLayout();
+    var game = Game.f2f(me, opponent, blackPieceLayout, redPieceLayout);
 
     test('- there should be a chess board', () {
       expect(game.chessBoard != null, true);
     });
 
     test('- there should be 2 sets of chess pieces', () {
-      expect(game.blackChessPieces != null, true);
-      expect(game.redChessPieces != null, true);
+      expect(game.blackPieceLayout != null, true);
+      expect(game.redPieceLayout != null, true);
     });
 
     group('- the Black set', () {
-      verifyChessPieces(game.blackChessPieces);
+      verifyChessPieces(game.blackPieceLayout);
     });
 
     group('- the Red set', () {
-      verifyChessPieces(game.redChessPieces);
+      verifyChessPieces(game.redPieceLayout);
     });
 
     group(
@@ -52,14 +54,14 @@ void main() {
   });
 }
 
-void verifyChessPieces(List<Piece> chessPieces) {
+void verifyChessPieces(PieceLayout chessPieces) {
   test('- should consist of 16 pieces', () {
-    expect(chessPieces.length, 16);
+    expect(chessPieces.mappings.length, 16);
   });
 
   test('- only 1 General', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == GeneralPiece.Name;
             })
@@ -70,7 +72,7 @@ void verifyChessPieces(List<Piece> chessPieces) {
 
   test('- only 2 Advisor pieces', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == AdvisorPiece.Name;
             })
@@ -81,7 +83,7 @@ void verifyChessPieces(List<Piece> chessPieces) {
 
   test('- only 2 Elephant pieces', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == ElephantPiece.Name;
             })
@@ -92,7 +94,7 @@ void verifyChessPieces(List<Piece> chessPieces) {
 
   test('- only 2 Horse pieces', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == HorsePiece.Name;
             })
@@ -103,7 +105,7 @@ void verifyChessPieces(List<Piece> chessPieces) {
 
   test('- only 2 Chariot pieces', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == ChariotPiece.Name;
             })
@@ -114,7 +116,7 @@ void verifyChessPieces(List<Piece> chessPieces) {
 
   test('- only 2 Cannon pieces', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == CannonPiece.Name;
             })
@@ -125,7 +127,7 @@ void verifyChessPieces(List<Piece> chessPieces) {
 
   test('- only 5 Soldier pieces', () {
     expect(
-        chessPieces
+        chessPieces.mappings.values
             .where((p) {
               return p.name == SoldierPiece.Name;
             })
