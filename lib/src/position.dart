@@ -1,6 +1,7 @@
 import 'piece.dart';
 
 class Position {
+  static const int MaxFiles = 9;
   final int rank;
   final int file;
   Piece chessPiece;
@@ -9,11 +10,10 @@ class Position {
 
   @override
   bool operator ==(dynamic other) =>
-      identical(this, other) ||
-      (this.rank == other.rank && this.file == other.file);
+      identical(this, other) || (rank == other.rank && file == other.file);
 
   @override
-  int get hashCode => rank * 10 + file;
+  int get hashCode => (rank - 1) * MaxFiles + file - 1;
 
   @override
   String toString() {
