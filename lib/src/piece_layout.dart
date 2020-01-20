@@ -7,14 +7,14 @@ class PieceLayout {
   PieceLayout(this.mappings);
 
   static PieceLayout createDefaultLayout() => PieceLayout({
-        Position(rank: 1, file: 5): GeneralPiece(),
-        Position(rank: 1, file: 4): AdvisorPiece(),
-        Position(rank: 1, file: 6): AdvisorPiece(),
-        Position(rank: 1, file: 3): ElephantPiece(),
-        Position(rank: 1, file: 7): ElephantPiece(),
-        Position(rank: 1, file: 2): HorsePiece(),
-        Position(rank: 1, file: 8): HorsePiece(),
         Position(rank: 1, file: 1): ChariotPiece(),
+        Position(rank: 1, file: 2): HorsePiece(),
+        Position(rank: 1, file: 3): ElephantPiece(),
+        Position(rank: 1, file: 4): AdvisorPiece(),
+        Position(rank: 1, file: 5): GeneralPiece(),
+        Position(rank: 1, file: 6): AdvisorPiece(),
+        Position(rank: 1, file: 7): ElephantPiece(),
+        Position(rank: 1, file: 8): HorsePiece(),
         Position(rank: 1, file: 9): ChariotPiece(),
         Position(rank: 3, file: 2): CannonPiece(),
         Position(rank: 3, file: 8): CannonPiece(),

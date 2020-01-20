@@ -1,5 +1,5 @@
 abstract class Piece {
-  String name;
+  final String name;
 
   Piece(this.name);
 }
