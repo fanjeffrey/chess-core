@@ -6,7 +6,7 @@ void main() {
     var chessBoard = Board();
 
     group('ChessBoard.constructor', () {
-      test('the count of the chess positions should be exactly equal to 90',
+      test('the count of the positions should be exactly equal to 90',
           () {
         expect(chessBoard.positions.length, 90);
       });
@@ -90,7 +90,7 @@ void verifyCalculateIndexFromTop(
 void verifyArrangePiecesAtBottom(
     Board chessBoard, Piece chessPiece, int rank, int file, int expectedIndex) {
   test(
-      'the ${chessPiece.name} with rank #$rank and file #$file should be at the position #$expectedIndex on chess board',
+      'the ${chessPiece.name} with rank #$rank and file #$file should be at the position #$expectedIndex on board',
       () {
     var chessPieces =
         PieceLayout({Position(rank: rank, file: file): chessPiece});
@@ -102,7 +102,7 @@ void verifyArrangePiecesAtBottom(
 void verifyArrangePiecesAtTop(
     Board chessBoard, Piece chessPiece, int rank, int file, int expectedIndex) {
   test(
-      'the ${chessPiece.name} with rank #$rank and file #$file should be at the position #$expectedIndex on chess board',
+      'the ${chessPiece.name} with rank #$rank and file #$file should be at the position #$expectedIndex on board',
       () {
     var chessPieces =
         PieceLayout({Position(rank: rank, file: file): chessPiece});

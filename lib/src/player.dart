@@ -1,8 +1,8 @@
 class Player {
-  String displayName;
+  String name;
   bool takingRed;
 
-  Player(this.displayName);
+  Player(this.name);
 
   void takeRed() {
     takingRed = true;
