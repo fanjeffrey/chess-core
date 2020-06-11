@@ -7,8 +7,10 @@ void main() {
     var blackPiecePlayer = 'Liu Bang';
     var game = Game.f2f(redPiecePlayer, blackPiecePlayer);
 
-    test('- there should be one board', () {
-      expect(game.chessBoard != null, true);
+    group('- board', () {
+      test('- there should be one board', () {
+        expect(game.chessBoard != null, true);
+      });
     });
 
     group('- there should be one set of Red pieces', () {
@@ -133,16 +135,20 @@ void main() {
       });
     });
 
-    test('- the opponent should use the Red pieces', () {
-      expect(game.redPiecePlayer, redPiecePlayer);
+    group('- players', () {
+      test('- the opponent should use the Red pieces', () {
+        expect(game.redPiecePlayer, redPiecePlayer);
+      });
+
+      test('- I should use the Black pieces', () {
+        expect(game.blackPiecePlayer, blackPiecePlayer);
+      });
     });
 
-    test('- I should use the Black pieces', () {
-      expect(game.blackPiecePlayer, blackPiecePlayer);
-    });
-
-    test('- the moves history should be empty', () {
-      expect(game.moves.length, 0);
+    group('- moves', () {
+      test('- the moves history should be empty', () {
+        expect(game.moves.length, 0);
+      });
     });
   });
 }
