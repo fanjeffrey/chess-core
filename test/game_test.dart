@@ -7,8 +7,10 @@ void main() {
     var blackPiecePlayer = 'Liu Bang';
     var game = Game.f2f(redPiecePlayer, blackPiecePlayer);
 
-    test('- there should be one board', () {
-      expect(game.chessBoard != null, true);
+    group('- board', () {
+      test('- there should be one board', () {
+        expect(game.chessBoard != null, true);
+      });
     });
 
     group('- there should be one set of Red pieces', () {
@@ -133,16 +135,20 @@ void main() {
       });
     });
 
-    test('- the opponent should use the Red pieces', () {
-      expect(game.redPiecePlayer, redPiecePlayer);
+    group('- players', () {
+      test('- the opponent should use the Red pieces', () {
+        expect(game.redPiecePlayer, redPiecePlayer);
+      });
+
+      test('- I should use the Black pieces', () {
+        expect(game.blackPiecePlayer, blackPiecePlayer);
+      });
     });
 
-    test('- I should use the Black pieces', () {
-      expect(game.blackPiecePlayer, blackPiecePlayer);
-    });
-
-    test('- the moves history should be empty', () {
-      expect(game.moves.length, 0);
+    group('- moves', () {
+      test('- the moves history should be empty', () {
+        expect(game.moves.length, 0);
+      });
     });
   });
 }
@@ -153,79 +159,30 @@ void verifyPieces(Iterable<Piece> pieces) {
   });
 
   test('- only 1 General piece', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == GeneralPiece.Name;
-            })
-            .toList()
-            .length,
-        1);
+    expect(pieces.whereType<GeneralPiece>().length, 1);
   });
 
   test('- only 2 Advisor pieces', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == AdvisorPiece.Name;
-            })
-            .toList()
-            .length,
-        2);
+    expect(pieces.whereType<AdvisorPiece>().length, 2);
   });
 
   test('- only 2 Elephant pieces', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == ElephantPiece.Name;
-            })
-            .toList()
-            .length,
-        2);
+    expect(pieces.whereType<ElephantPiece>().length, 2);
   });
 
   test('- only 2 Horse pieces', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == HorsePiece.Name;
-            })
-            .toList()
-            .length,
-        2);
+    expect(pieces.whereType<HorsePiece>().length, 2);
   });
 
   test('- only 2 Chariot pieces', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == ChariotPiece.Name;
-            })
-            .toList()
-            .length,
-        2);
+    expect(pieces.whereType<ChariotPiece>().length, 2);
   });
 
   test('- only 2 Cannon pieces', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == CannonPiece.Name;
-            })
-            .toList()
-            .length,
-        2);
+    expect(pieces.whereType<CannonPiece>().length, 2);
   });
 
   test('- only 5 Soldier pieces', () {
-    expect(
-        pieces
-            .where((p) {
-              return p.name == SoldierPiece.Name;
-            })
-            .toList()
-            .length,
-        5);
+    expect(pieces.whereType<SoldierPiece>().length, 5);
   });
 }

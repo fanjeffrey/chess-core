@@ -6,8 +6,7 @@ void main() {
     var chessBoard = Board();
 
     group('ChessBoard.constructor', () {
-      test('the count of the positions should be exactly equal to 90',
-          () {
+      test('the count of the positions should be exactly equal to 90', () {
         expect(chessBoard.positions.length, 90);
       });
 
